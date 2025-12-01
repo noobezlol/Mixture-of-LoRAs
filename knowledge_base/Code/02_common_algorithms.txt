@@ -1,0 +1,24 @@
+Topic: Common Python Algorithms
+
+[Palindrome Check]
+Description: A palindrome is a sequence that reads the same forwards and backward. The check should typically be case-insensitive and ignore non-alphanumeric characters.
+- High-Performance Method: The most Pythonic way is to clean the string and compare it with its reverse.
+  1. Pre-processing: Convert the string to lowercase and remove spaces and punctuation. A common way is to filter for alphanumeric characters.
+  2. Comparison: Compare the cleaned string with its reversed version using slicing (`[::-1]`).
+  Syntax: `cleaned_string == cleaned_string[::-1]`
+  Example: For "A man, a plan, a canal: Panama", the cleaned string is "amanaplanacanalpanama", which is equal to its reverse.
+
+[FizzBuzz Algorithm]
+Description: A standard programming problem to test basic loop and conditional logic.
+- Logic: Iterate from 1 to a given number `n`. For each number, check for divisibility.
+- Critical Step: The check for divisibility by both 3 and 5 (i.e., by 15) MUST come first to avoid being prematurely caught by the individual checks for 3 or 5.
+  Correct Order:
+  1. `if i % 15 == 0:` print "FizzBuzz"
+  2. `elif i % 3 == 0:` print "Fizz"
+  3. `elif i % 5 == 0:` print "Buzz"
+  4. `else:` print the number.
+
+[Binary Search]
+Description: An efficient algorithm for finding an item from a sorted list of items. It works by repeatedly dividing in half the portion of the list that could contain the item.
+- Requirement: The list MUST be sorted.
+- Process: Compare the target value to the middle element of the list. If they are not equal, the half in which the target cannot lie is eliminated and the search continues on the remaining half.

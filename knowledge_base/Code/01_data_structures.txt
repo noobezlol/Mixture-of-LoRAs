@@ -1,0 +1,28 @@
+Topic: Advanced Python Data Structures
+
+[Dictionary Operations]
+Description: Dictionaries are core to Python. Common operations include inversion and merging.
+- Swapping Keys and Values (Inversion): The most efficient method is a dictionary comprehension. This assumes all values are unique and hashable.
+  Syntax: new_dict = {value: key for key, value in old_dict.items()}
+  Example: {'a': 1, 'b': 2} becomes {1: 'a', 2: 'b'}.
+- Merging Dictionaries: In Python 3.9+, the union operator `|` is the cleanest way.
+  Syntax: merged_dict = dict1 | dict2
+  Example: {'a': 1} | {'b': 2} becomes {'a': 1, 'b': 2}.
+
+[List Operations]
+Description: Lists are versatile ordered collections.
+- Removing Duplicates while Preserving Order: A common and efficient technique is to use `dict.fromkeys()`.
+  Syntax: unique_list = list(dict.fromkeys(my_list))
+  Example: [1, 3, 2, 3, 1] becomes [1, 3, 2].
+- Flattening a List of Lists: Use a list comprehension for a simple and readable solution.
+  Syntax: flat_list = [item for sublist in list_of_lists for item in sublist]
+  Example: [[1, 2], [3, 4]] becomes [1, 2, 3, 4].
+
+[Set Operations]
+Description: Sets are unordered collections of unique elements. They are highly optimized for membership testing and mathematical set operations.
+- Finding Common Elements (Intersection): Use the `&` operator.
+  Syntax: common_elements = set1 & set2
+- Finding All Unique Elements (Union): Use the `|` operator.
+  Syntax: all_elements = set1 | set2
+- Finding Differences (Elements in one set but not the other): Use the `-` operator.
+  Syntax: difference = set1 - set2

@@ -1,0 +1,33 @@
+Topic: Python File Input/Output (I/O)
+
+[Reading a Text File]
+Description: The standard and safest way to read a text file is using a `with` statement, which ensures the file is automatically closed.
+- Reading Line by Line: This is the most memory-efficient method for large files.
+  Syntax:
+  lines = []
+  with open('my_file.txt', 'r', encoding='utf-8') as f:
+      for line in f:
+          lines.append(line.strip())
+
+[Writing to a Text File]
+Description: Use the `with` statement with the mode 'w' for writing. This will overwrite the file if it exists. Use mode 'a' to append.
+- Writing a List of Strings:
+  Syntax:
+  lines_to_write = ["first line", "second line"]
+  with open('output.txt', 'w', encoding='utf-8') as f:
+      for line in lines_to_write:
+          f.write(line + '\\n')
+
+[Working with JSON Files]
+Description: Python's built-in `json` library is the standard for handling JSON data.
+- Reading a JSON file:
+  Syntax:
+  import json
+  with open('data.json', 'r') as f:
+      data = json.load(f)
+- Writing a Python dictionary to a JSON file:
+  Syntax:
+  import json
+  my_dict = {'name': 'AI', 'version': 1.0}
+  with open('output.json', 'w') as f:
+      json.dump(my_dict, f, indent=4)

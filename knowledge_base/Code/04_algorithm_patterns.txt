@@ -1,0 +1,71 @@
+Topic: Advanced Algorithm Patterns and Edge Cases
+
+[Stack-Based String Problems]
+Description: Stack data structures are essential for tracking matching pairs and nested structures.
+- Valid Parentheses Pattern: Use a stack to track opening brackets. For each closing bracket, check if it matches the top of the stack.
+  Key Insight: Initialize the stack with a base index (usually -1) to handle edge cases.
+  Critical Edge Case: When popping makes the stack empty, this indicates an UNMATCHED closing bracket. You must push the current index as the new base, NOT count it as valid.
+  Syntax for longest valid parentheses:
+  stack = [-1]
+  for i, char in enumerate(s):
+      if char == '(':
+          stack.append(i)
+      else:
+          stack.pop()
+          if not stack:
+              stack.append(i)  # Reset base - CRITICAL
+          else:
+              max_len = max(max_len, i - stack[-1])
+
+[String Compression Algorithms]
+Description: Compression replaces consecutive characters with character + count.
+- Run-Length Encoding: Count consecutive duplicates and only add count if > 1.
+  Key Insight: Always compare compressed length to original BEFORE returning.
+  Efficient Implementation: Use a list to build compressed string, then join (faster than string concatenation).
+  Syntax:
+  compressed = []
+  count = 1
+  for i in range(1, len(s)):
+      if s[i] == s[i-1]:
+          count += 1
+      else:
+          compressed.append(s[i-1] + (str(count) if count > 1 else ''))
+          count = 1
+  # Don't forget last character
+  compressed.append(s[-1] + (str(count) if count > 1 else ''))
+
+[Dynamic Programming Edge Cases]
+Description: DP problems often fail on boundary conditions.
+- Empty Input Handling: Always check for empty strings/arrays at the start.
+  Pattern: `if not s: return 0` or appropriate base case
+- Single Element Cases: Test with inputs of length 1 to catch off-by-one errors.
+- Matching vs Non-Matching: For problems with pairs (parentheses, brackets), distinguish between:
+  1. Found a match → process normally
+  2. No match possible → reset state/base
+  3. Input exhausted → finalize answer
+
+[Algorithm Verification Strategy]
+Description: How to validate your algorithm handles edge cases.
+- Test Case Categories:
+  1. Empty input: "", [], {}
+  2. Single element: "a", [1], {0}
+  3. All invalid: ")))", "zzz" (no matches)
+  4. Mixed valid/invalid: ")()())", "aabbcc"
+  5. All valid: "(())", "aaaaaa"
+- Common Pitfall: Ignoring edge cases vs attempting to handle them incorrectly.
+  Rule: Always attempt to handle edge cases explicitly. A wrong attempt reveals your reasoning and is easier to fix than silent failure.
+
+[Stack Algorithm Checklist]
+Description: Pre-flight checks before implementing stack-based solutions.
+- [ ] Initialize stack with appropriate base value (often -1 or 0)
+- [ ] Handle empty stack after operations (usually means invalid state)
+- [ ] Process last element after loop ends
+- [ ] Check if stack operations can cause IndexError
+- [ ] Verify time complexity is O(n) with single pass
+
+[BFS Optimization Patterns]
+- ALWAYS convert lists to sets before BFS: word_set = set(word_list)
+- Mark visited WHEN QUEUING, not when processing
+- Check target existence BEFORE starting BFS
+- Use deque with (state, level) tuples
+
