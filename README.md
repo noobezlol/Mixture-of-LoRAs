@@ -235,7 +235,7 @@ PyTorch: 2.8.0
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/mixture-of-loras.git
+git clone https://github.com/noobezlol/mixture-of-loras.git
 cd mixture-of-loras
 
 # Start the system with docker-compose (handles volume mapping automatically)
