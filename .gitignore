@@ -1,0 +1,27 @@
+# Heavy Model & Data Folders (Do not upload to GitHub)
+Section-*/
+Final-Dynamic-Model/
+Classifier/
+final_model/
+Data/
+Git-data/
+unsloth_compiled_cache/
+knowledge_base/
+knowledge_base_other/
+
+# IDE & System Junk
+.idea/
+.vscode/
+.DS_Store
+
+# Python Junk
+__pycache__/
+*.pyc
+.env
+.ipynb_checkpoints/
+
+# Large File Extensions (Safety Net)
+*.safetensors
+*.bin
+*.pt
+*.pth

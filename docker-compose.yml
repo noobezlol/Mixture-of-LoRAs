@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  chatbot:
+    build: .
+    image: mixture-of-loras:v1
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+    volumes:
+      # 1. Mount the project code (Standard)
+      - .:/app
+
+      # 2. Mount the Hugging Face cache DYNAMICALLY
+      # ${HOME} is automatically replaced by the path of the user running the command.
+      # We map it to /root/.cache/... because the container runs as root by default.
+      - ${HOME}/.cache/huggingface:/root/.cache/huggingface
+
+    environment:
+      # 3. Explicitly tell the library where to look inside the container
+      - HF_HOME=/root/.cache/huggingface
+
+    stdin_open: true
+    tty: true
+    network_mode: host
