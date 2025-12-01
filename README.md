@@ -812,10 +812,6 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
-    # Ensure GPU access
-    runtime: nvidia
-    environment:
-      - NVIDIA_VISIBLE_DEVICES=all
 ```
 
 **Key Benefits of Docker Compose:**
@@ -908,12 +904,4 @@ For questions or support:
 
 <p align="center">
   <a href="#top">Back to top</a>
-</p>``python
-# Configure LoRA for code expert
-model = FastLanguageModel.get_peft_model(
-    model,
-    r=16,  # Rank
-    lora_alpha=16,
-    target_modules=["q_proj", "k_proj", "v_proj", "o_proj"],
-    lora_dropout=0,
-    bias="none",
+</p>
