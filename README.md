@@ -249,7 +249,7 @@ docker-compose up -d --build
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/mixture-of-loras.git
+git clone https://github.com/noobezlol/mixture-of-loras.git
 cd mixture-of-loras
 
 # Build the Docker image
