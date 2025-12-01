@@ -22,10 +22,10 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # --- Paths ---
 
 # 1. Define Base Directory
+# 1. Define Base Directory
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # 2. Define Mapping: Local Folder -> Hugging Face ID
-#    (The script will look for the Local Folder first. If missing, it uses the Cloud ID.)
 MODEL_MAP = {
     "router": {
         "local": os.path.join(BASE_DIR, "Classifier"),
@@ -57,13 +57,12 @@ print("⚙️  Configuring Model Paths...")
 ROUTER_PATH = get_path("router")
 CODE_LORA_PATH = get_path("code")
 MATH_LORA_PATH = get_path("math")
-
-# Base model is always the Unsloth hosted version (it caches automatically)
 BASE_MODEL_PATH = "unsloth/Llama-3.2-3B-Instruct-bnb-4bit"
 
-# Knowledge Base Paths (Always Local - users clone these from GitHub)
-CODE_KB_PATH = os.path.join(BASE_DIR, "knowledge_base")
-OTHER_KB_PATH = os.path.join(BASE_DIR, "knowledge_base_other")
+# 5. KNOWLEDGE BASE PATHS (CORRECTED)
+# Now pointing to the specific subfolders 'Code' and 'Base'
+CODE_KB_PATH = os.path.join(BASE_DIR, "knowledge_base", "Code")
+OTHER_KB_PATH = os.path.join(BASE_DIR, "knowledge_base", "Base")
 
 # --- System Prompts ---
 CODE_SYSTEM_PROMPT = """You are an elite software engineer who writes syntactically perfect, logically sound code across all programming languages.
