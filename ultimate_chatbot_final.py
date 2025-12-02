@@ -49,15 +49,6 @@ def get_path(key):
         return local_p
     else:
         cloud_id = MODEL_MAP[key]["cloud"]
-        print(f"   [Config] Local model not found. Using Cloud ID for '{key}': {cloud_id}")
-        return cloud_id
-
-# 4. Set Final Paths
-print("⚙️  Configuring Model Paths...")
-ROUTER_PATH = get_path("router")
-CODE_LORA_PATH = get_path("code")
-MATH_LORA_PATH = get_path("math")
-BASE_MODEL_PATH = "unsloth/Llama-3.2-3B-Instruct-bnb-4bit"
 
                 if section.strip(): self.documents.append(section.strip())
         if not self.documents: return
